@@ -8,25 +8,26 @@
         <div class="form-group row">
           <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Filter by:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control form-control-lg" id="colFormLabelLg" placeholder="type test name">
+            <input type="text" class="form-control form-control-lg" id="colFormLabelLg" [(ngModel)]='listFilter'>
           </div>
         </div>
       </form>
     </div>
     <div class="table-responsive">
+      <p *ngIf="listFilter">Filtered by: {{listFilter}}</p>
       <table class="table" *ngIf='tests && tests.length'>
         <thead>
         <tr>
           <th>Name</th>
           <th>Description</th>
-          <th></th>
+          <th><button class="btn btn-primary" (click)="toggleImage()">{{showImage ? 'Hide' : 'Show'}} Image</button></th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor='let test of tests'>
           <td>{{test.name}}</td>
           <td>{{test.description}}</td>
-          <td></td>
+          <td><img *ngIf='showImage' [src]='test.imgUrl' style="max-width: 50px; margin: 2px;"/></td>
         </tr>
         </tbody>
       </table>

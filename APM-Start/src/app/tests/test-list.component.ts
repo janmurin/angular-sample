@@ -25,25 +25,32 @@ export class TestListComponent {
       name: 'first test',
       description: 'first-description',
       imgUrl: 'https://openclipart.org/image/300px/svg_to_png/58471/garden_cart.png',
-      price: 23.543
+      price: 23.543,
+      rating: 4.32
     },
     {
       name: 'second test',
       description: 'second-description',
       imgUrl: 'https://openclipart.org/image/300px/svg_to_png/58471/garden_cart.png',
-      price: 2.43
+      price: 2.43,
+      rating: 3.61
     },
     {
       name: 'third test',
       description: 'third-description',
       imgUrl: 'https://openclipart.org/image/300px/svg_to_png/58471/garden_cart.png',
-      price: 345
+      price: 345,
+      rating: 2.60
     }
   ];
 
   constructor() {
     this.filteredTests = this.tests;
     this.listFilter = '';
+  }
+
+  ngOnInit(){
+    console.log('on init of test list component');
   }
 
   toggleImage() {
@@ -54,5 +61,10 @@ export class TestListComponent {
     filterBy = filterBy.toLocaleLowerCase();
     return this.tests.filter((product: ITest) =>
       product.name.toLocaleLowerCase().indexOf(filterBy) !== -1);
+  }
+
+  onRatingClicked(message: string) {
+    console.log('stars ratingClicked: ' + message);
+    this.pageTitle = 'Tests list: ' + message;
   }
 }

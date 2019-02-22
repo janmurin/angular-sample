@@ -22,6 +22,7 @@
           <th>Name</th>
           <th>Description</th>
           <th>Price</th>
+          <th>Rating</th>
           <th><button class="btn btn-primary" (click)="toggleImage()">{{showImage ? 'Hide' : 'Show'}} Image</button></th>
         </tr>
         </thead>
@@ -30,6 +31,10 @@
           <td>{{test.name}}</td>
           <td>{{test.description | lowercase | convertToSpaces:'-'}}</td>
           <td>{{test.price | currency:'EUR':'symbol':'1.2-2' }}</td>
+          <td><pm-stars
+            [rating]="test.rating"
+            (ratingClicked)="onRatingClicked($event)"
+          ></pm-stars></td>
           <td><img *ngIf='showImage' [src]='test.imgUrl' style="max-width: 50px; margin: 2px;"/></td>
         </tr>
         </tbody>

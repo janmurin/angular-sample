@@ -3,5 +3,6 @@ export interface ITest {
   description: string;
   imgUrl: string;
   price: number;
+  rating: number;
 }
 
